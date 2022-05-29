@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>相等运算符 | Emarginata's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 6.1.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">相等运算符</h1><a id="logo" href="/.">Emarginata's Blog</a><p class="description">苍山若望，负雪恒行。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">相等运算符</h1><div class="post-meta">2022-05-18<span> | </span><span class="category"><a href="/categories/%E6%96%87%E6%A1%A3/">文档</a></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 370</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 1</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="post-content"><h3 id="x3D-x3D"><a href="#x3D-x3D" class="headerlink" title="&#x3D;&#x3D;"></a>&#x3D;&#x3D;</h3><h5 id="不同类型的值用相等运算符比较后的结果"><a href="#不同类型的值用相等运算符比较后的结果" class="headerlink" title="不同类型的值用相等运算符比较后的结果"></a>不同类型的值用相等运算符比较后的结果</h5><table>
+<thead>
+<tr>
+<th>类型(x)</th>
+<th>类型(y)</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>null</td>
+<td>undefined</td>
+<td>true</td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>null</td>
+<td>true</td>
+</tr>
+<tr>
+<td>数</td>
+<td>字符串</td>
+<td>x &#x3D;&#x3D; toNumber(y)</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>数</td>
+<td>toNumber(x) &#x3D;&#x3D; y</td>
+</tr>
+<tr>
+<td>布尔值</td>
+<td>任何类型</td>
+<td>toNumber(x) &#x3D;&#x3D; y</td>
+</tr>
+<tr>
+<td>任何类型</td>
+<td>布尔值</td>
+<td>x &#x3D;&#x3D; toNumber(y)</td>
+</tr>
+<tr>
+<td>字符串或数</td>
+<td>对象</td>
+<td>x &#x3D;&#x3D; toPrimitive(y)</td>
+</tr>
+<tr>
+<td>对象</td>
+<td>字符串或数</td>
+<td>toPrimitive(x) &#x3D;&#x3D; y</td>
+</tr>
+</tbody></table>
+<p>如果x和y类型相同，JavaScript会用equals方法比较这两个值或对象。<br>没有列在这个表格中的其他情况都会返回false。</p>
+<h5 id="toNumber方法对不同类型返回的结果"><a href="#toNumber方法对不同类型返回的结果" class="headerlink" title="toNumber方法对不同类型返回的结果"></a>toNumber方法对不同类型返回的结果</h5><table>
+<thead>
+<tr>
+<th>值类型</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>undefined</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>null</td>
+<td>+0</td>
+</tr>
+<tr>
+<td>布尔值</td>
+<td>如果是true，返回1；如果是false，返回+0</td>
+</tr>
+<tr>
+<td>数</td>
+<td>数对应的值</td>
+</tr>
+</tbody></table>
+<h5 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;packt&#x27;?true:false); //true,字符串长度大于1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;packt&#x27; == true); //false</span><br></pre></td></tr></table></figure>
+<p>原因：</p>
+<ol>
+<li>首先，布尔值会被toNumber方法转成数，因此得到<code>packt == 0</code>;</li>
+<li>其次，用toNumber方法转换字符串值。因为字符串中包含字母，所以会被转成NaN，表达式就变成了<code>NaN == 0</code>，结果就是false。</li>
+</ol>
+<h3 id="x3D-x3D-x3D"><a href="#x3D-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;</h3><p>如果比较的两个值类型不同，比较的结果就是false。如果比较的两个值类型相同，结果会根据下表判断：</p>
+<table>
+<thead>
+<tr>
+<th>类型(x)</th>
+<th>值</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数</td>
+<td>x和y的值相等(但不是NaN)</td>
+<td>true</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>x和y是相同的字符</td>
+<td>true</td>
+</tr>
+<tr>
+<td>布尔值</td>
+<td>x和y都是true或false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>对象</td>
+<td>x和y引用同一个对象</td>
+<td>true</td>
+</tr>
+</tbody></table>
+</div><div class="tags"><a href="/tags/JavaScript"><i class="fa fa-tag">JavaScript</i></a></div><div class="post-nav"><a class="pre" href="/2022/05/29/%E7%AE%97%E6%B3%95/%E5%AE%9E%E7%8E%B0Math.pow(x,n)/">实现Math.pow(x,n)</a><a class="next" href="/2022/05/17/%E3%80%8A%E5%AD%A6%E4%B9%A0JavaScript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B0/">《学习JavaScript数据结构与算法》笔记</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Demo/">Demo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%87%E6%A1%A3/">文档</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%87%E6%A1%A3/Demo/">Demo</a></li></ul></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/CSS3/" style="font-size: 15px;">CSS3</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/HTML5/" style="font-size: 15px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/HTTP/" style="font-size: 15px;">HTTP</a> <a href="/tags/React/" style="font-size: 15px;">React</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/vtk-js/" style="font-size: 15px;">vtk.js</a> <a href="/tags/echarts/" style="font-size: 15px;">echarts</a> <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/" style="font-size: 15px;">可视化</a> <a href="/tags/OrgChart-js/" style="font-size: 15px;">OrgChart.js</a> <a href="/tags/umi/" style="font-size: 15px;">umi</a> <a href="/tags/gojs/" style="font-size: 15px;">gojs</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 15px;">浏览器</a> <a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 15px;">优化</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/05/29/%E7%AE%97%E6%B3%95/%E5%AE%9E%E7%8E%B0Math.pow(x,n)/">实现Math.pow(x,n)</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/05/18/%E7%9B%B8%E7%AD%89%E8%BF%90%E7%AE%97%E7%AC%A6/">相等运算符</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/05/17/%E3%80%8A%E5%AD%A6%E4%B9%A0JavaScript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B0/">《学习JavaScript数据结构与算法》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/05/16/umi%E9%87%8D%E6%9E%84%E6%B5%81%E7%A8%8B%E5%8C%96%E7%AC%94%E8%AE%B0/">umi重构流程化笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/05/10/js%E4%B8%AD%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F/">js中遍历对象的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/05/05/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">HTTP状态码</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/05/05/%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%8E%B0%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">从输入URL到页面展现发生了什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/05/04/script%E6%A0%87%E7%AD%BE%E4%B8%AD%E7%9A%84defer%E5%92%8Casyn%E5%B1%9E%E6%80%A7/">script标签中的defer和asyn属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/05/03/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/">前端优化方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/05/03/JavaScript%E4%B8%AD%E7%9A%84%E5%8E%9F%E5%9E%8B%E9%93%BE/">JavaScript中的原型链</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2022 <a href="/." rel="nofollow">Emarginata's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
